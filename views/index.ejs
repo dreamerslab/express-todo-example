@@ -4,5 +4,12 @@
 </form>
 
 <% todos.forEach(function(todo){ %>
-  <p><%= todo.content %></p>
+  <p>
+    <span>
+      <%= todo.content %>
+    </span>
+    <span>
+      <a href="/destroy/<%= todo._id %>" title="Delete this todo item">Delete</a>
+    </span>
+  </p>
 <% }); %>
