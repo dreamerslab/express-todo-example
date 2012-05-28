@@ -8,6 +8,9 @@ var express = require('express')
 
 var app = module.exports = express.createServer();
 
+// mongoose setup
+require('./db');
+
 // Configuration
 
 app.configure(function(){
