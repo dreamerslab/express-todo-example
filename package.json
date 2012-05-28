@@ -1,9 +1,10 @@
 {
-    "name": "application-name"
+    "name": "todo"
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
-      "express": "2.5.8"
+      "express": "2.5.9"
     , "ejs": ">= 0.0.1"
+    , "mongoose": "2.6.5"
   }
 }
