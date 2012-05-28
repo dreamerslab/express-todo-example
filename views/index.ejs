@@ -2,3 +2,7 @@
 <form action="/" method="post" accept-charset="utf-8">
   <input type="text" name="content" />
 </form>
+
+<% todos.forEach(function(todo){ %>
+  <p><%= todo.content %></p>
+<% }); %>
