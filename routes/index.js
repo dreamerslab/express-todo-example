@@ -18,3 +18,11 @@ exports.create = function(req, res){
     res.redirect('/');
   });
 };
+
+exports.destroy = function(req, res){
+  Todo.findById(req.params.id, function(err, todo){
+    todo.remove(function(err, todo){
+      res.redirect('/');
+    });
+  });
+};
