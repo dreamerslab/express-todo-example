@@ -176,3 +176,24 @@ body {
   display: inline;
   float: left;
 }
+
+/* line 86, ../sass/screen.sass */
+footer {
+  overflow: hidden;
+  *zoom: 1;
+  width: 135px;
+  margin: 0 auto;
+  padding: 15px 0 0;
+}
+
+/* line 92, ../sass/screen.sass */
+#dreamerslab {
+  display: inline;
+  float: left;
+  text-decoration: none;
+  background: url("/images/dreamerslab.png") no-repeat top left;
+  padding: 0 0 3px 16px;
+  color: #333333;
+  text-decoration: underline;
+  font-weight: bold;
+}
