@@ -37,3 +37,12 @@ exports.edit = function(req, res){
   });
 };
 
+exports.update = function(req, res){
+  Todo.findById(req.params.id, function(err, todo){
+    todo.content = req.body.content;
+    todo.updatedAt = Date.now();
+    todo.save(function(err, todo, count){
+      res.redirect('/');
+    });
+  });
+};
