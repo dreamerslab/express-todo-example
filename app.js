@@ -33,6 +33,7 @@ var routes = require('./routes');
 app.get('/', routes.index);
 app.post('/create', routes.create);
 app.get('/destroy/:id', routes.destroy);
+app.get('/edit/:id', routes.edit);
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
