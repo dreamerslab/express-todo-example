@@ -1,11 +1,10 @@
 var mongoose = require('mongoose')
-  , Schema = mongoose.Schema
-  , ObjectId = Schema.ObjectId;
+  , Schema = mongoose.Schema;
 
 var Todo = new Schema({
-    userId    : ObjectId
-  , content   : String
-  , updatedAt : Date
+    userId: String
+  , content: String
+  , updatedAt: Date
 });
 
 mongoose.model('Todo', Todo);
