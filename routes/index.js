@@ -2,12 +2,15 @@ var mongoose = require('mongoose')
   , Todo = mongoose.model('Todo');
 
 exports.index = function(req, res){
-  Todo.find(function(err, todos, count){
-    res.render('index', {
-        title: 'Express Todo Example'
-      , todos: todos
+  Todo.
+    find().
+    sort('updatedAt', -1).
+    run(function(err, todos, count){
+      res.render('index', {
+          title: 'Express Todo Example'
+        , todos: todos
+      });
     });
-  });
 };
 
 exports.create = function(req, res){
