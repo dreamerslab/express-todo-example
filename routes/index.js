@@ -1,22 +1,6 @@
 var mongoose = require('mongoose')
-  , Todo = mongoose.model('Todo');
-
-function randomNumber(min, max){
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-function uid(len){
-  var str    = ''
-    , src    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    , srcLen = src.length
-    , i      = len;
-
-  for(; i-- ;){
-    str += src.charAt(randomNumber(0, srcLen - 1));
-  }
-
-  return str;
-};
+  , Todo = mongoose.model('Todo')
+  , utils = require('express').utils;
 
 exports.index = function(req, res, next){
   Todo.
@@ -46,7 +30,9 @@ exports.create = function(req, res, next){
 
 exports.destroy = function(req, res, next){
   Todo.findById(req.params.id, function(err, todo){
-    if (todo.userId !== req.cookies.userid) return;
+    if (todo.userId !== req.cookies.userid) {
+      return utils.forbidden();
+    }
 
     todo.remove(function(err, todo){
       if (err) return next(err);
@@ -73,7 +59,9 @@ exports.edit = function(req, res, next){
 
 exports.update = function(req, res, next){
   Todo.findById(req.params.id, function(err, todo){
-    if (todo.userId !== req.cookies.userid) return;
+    if (todo.userId !== req.cookies.userid) {
+      return utils.forbidden();
+    }
 
     todo.content = req.body.content;
     todo.updatedAt = Date.now();
@@ -87,7 +75,7 @@ exports.update = function(req, res, next){
 
 exports.currentUser = function(req, res, next){
   if (!req.cookies.userid) {
-    res.cookie('userid', uid(32));
+    res.cookie('userid', utils.uid(32));
   }
 
   next();
