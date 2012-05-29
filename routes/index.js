@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
   , Todo = mongoose.model('Todo')
-  , utils = require('express').utils;
+  , utils = require('connect').utils;
 
 exports.index = function(req, res, next){
   Todo.
