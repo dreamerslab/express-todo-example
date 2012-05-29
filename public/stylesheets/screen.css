@@ -63,14 +63,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 4, ../sass/screen.sass */
+/* line 7, ../sass/screen.sass */
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
 }
 
-/* line 7, ../sass/screen.sass */
+/* line 10, ../sass/screen.sass */
 #page-title {
-  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
   color: #666666;
   background-color: #f8f8f8;
   font-size: 32px;
@@ -80,7 +79,7 @@ body {
   text-shadow: 0 1px 1px white;
 }
 
-/* line 17, ../sass/screen.sass */
+/* line 19, ../sass/screen.sass */
 .del-btn, .del-btn-edit {
   display: inline;
   float: right;
@@ -92,21 +91,21 @@ body {
   height: 18px;
 }
 
-/* line 26, ../sass/screen.sass */
+/* line 28, ../sass/screen.sass */
 .del-btn-edit {
   width: 20px;
   height: 21px;
 }
 
-/* line 30, ../sass/screen.sass */
+/* line 32, ../sass/screen.sass */
 #list {
   width: 283px;
   margin: 0 auto;
-  padding: 20px 0 0;
+  padding: 20px 0 15px;
   position: relative;
 }
 
-/* line 36, ../sass/screen.sass */
+/* line 38, ../sass/screen.sass */
 .item, .item-new {
   overflow: hidden;
   *zoom: 1;
@@ -115,45 +114,51 @@ body {
   border-radius: 6px 6px 6px 6px;
   list-style: none outside none;
   margin: 6px 0 0;
-  padding: 7px 9px;
+  padding: 8px 9px 9px;
   position: relative;
   text-shadow: 1px 1px 0 white;
   width: 250px;
 }
-/* line 47, ../sass/screen.sass */
+/* line 49, ../sass/screen.sass */
 .item:hover, .item-new:hover {
   border-color: #9be0f9;
   box-shadow: 0 0 5px #a6d5fd;
 }
 
-/* line 51, ../sass/screen.sass */
+/* line 53, ../sass/screen.sass */
 .item-new {
   padding: 4px 5px;
   width: 258px;
 }
 
-/* line 55, ../sass/screen.sass */
+/* line 57, ../sass/screen.sass */
 .input, .update-input {
   border: 1px solid #cccccc;
   color: #666666;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  font-size: 15px;
   padding: 3px 4px;
   width: 248px;
   height: 19px;
 }
 
-/* line 64, ../sass/screen.sass */
+/* line 66, ../sass/screen.sass */
+.update-input {
+  width: 220px;
+}
+
+/* line 69, ../sass/screen.sass */
 .content {
   color: #777777;
   font-size: 1.2em;
   text-shadow: 1px 1px 0 white;
 }
 
-/* line 69, ../sass/screen.sass */
+/* line 74, ../sass/screen.sass */
 .update-link {
   display: inline;
   float: left;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
   color: #666666;
   text-decoration: none;
   overflow: hidden;
@@ -161,39 +166,88 @@ body {
   max-width: 15em;
   text-overflow: ellipsis;
 }
-/* line 77, ../sass/screen.sass */
+/* line 83, ../sass/screen.sass */
 .update-link:hover {
   color: #333333;
 }
 
-/* line 80, ../sass/screen.sass */
-.update-input {
-  width: 215px;
-}
-
-/* line 83, ../sass/screen.sass */
+/* line 86, ../sass/screen.sass */
 .update-form {
   display: inline;
   float: left;
 }
 
-/* line 86, ../sass/screen.sass */
-footer {
-  overflow: hidden;
-  *zoom: 1;
-  width: 135px;
-  margin: 0 auto;
-  padding: 15px 0 0;
+/* line 89, ../sass/screen.sass */
+#footer-wrap {
+  background-color: #f8f8f8;
 }
 
 /* line 92, ../sass/screen.sass */
+#footer {
+  overflow: hidden;
+  *zoom: 1;
+  width: 210px;
+  margin: 0 auto;
+  position: relative;
+  top: 17px;
+}
+
+/* line 99, ../sass/screen.sass */
 #dreamerslab {
   display: inline;
   float: left;
-  text-decoration: none;
+  font-family: Georgia;
   background: url("/images/dreamerslab.png") no-repeat top left;
   padding: 0 0 3px 16px;
   color: #333333;
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: bold;
+}
+/* line 107, ../sass/screen.sass */
+#dreamerslab:hover {
+  text-decoration: underline;
+}
+
+/* line 110, ../sass/screen.sass */
+.footer-content {
+  display: inline;
+  float: left;
+  color: #333333;
+  font-family: Georgia;
+  padding: 0 4px;
+}
+
+/* line 116, ../sass/screen.sass */
+#github-link {
+  color: #666666;
+  text-decoration: none;
+}
+/* line 119, ../sass/screen.sass */
+#github-link:hover {
+  text-decoration: underline;
+}
+
+/* line 10, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 12, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#layout {
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -48px;
+}
+/* line 18, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#layout #layout-footer {
+  height: 48px;
+}
+
+/* line 20, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#footer-wrap {
+  clear: both;
+  position: relative;
+  height: 48px;
 }
