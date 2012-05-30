@@ -28,7 +28,7 @@ echo '...done!'
 echo ''
 
 echo 'Stopping monit...'
-sudo /etc/init.d/monit stop
+# sudo /etc/init.d/monit stop
 sudo monit stop todo
 echo '...done!'
 echo ''
@@ -59,6 +59,6 @@ echo '...done!'
 echo ''
 
 echo 'Starting monit...'
-sudo /etc/init.d/monit start
+# sudo /etc/init.d/monit start
 sudo monit start todo
 echo '...done!'
