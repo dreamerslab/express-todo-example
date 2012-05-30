@@ -12,7 +12,7 @@ require('./db');
 var routes = require('./routes');
 
 // Configuration
-app.configure(function(){
+app.configure('development', function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.favicon());
@@ -21,13 +21,16 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(routes.currentUser);
   app.use(app.router);
-});
-
-app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'ejs');
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
+  app.use(routes.currentUser);
+  app.use(app.router);
   app.use(express.errorHandler());
 });
 
