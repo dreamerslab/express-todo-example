@@ -5,7 +5,7 @@
 
 set logfile /srv/www/todo/log/monit.log
 
-check system todo
+check system express-todo-example.dreamerslab.com
       start "/sbin/start todo" with timeout 60 seconds
       stop "/sbin/stop todo"
       if loadavg (1min) > 4 then alert
