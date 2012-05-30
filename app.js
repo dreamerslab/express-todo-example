@@ -17,6 +17,7 @@ app.configure('development', function(){
   app.set('view engine', 'ejs');
   app.use(express.favicon());
   app.use(express.static(__dirname + '/public'));
+  app.use(express.logger());
   app.use(express.cookieParser());
   app.use(express.bodyParser());
   app.use(routes.currentUser);
