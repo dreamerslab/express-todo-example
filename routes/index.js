@@ -6,7 +6,7 @@ exports.index = function ( req, res, next ){
   Todo.
     find({ userId : req.cookies.userid }).
     sort( 'updatedAt', -1 ).
-    run( function ( err, todos, count ){
+    run( function ( err, todos ){
       if( err ) return next( err );
 
       res.render( 'index', {
