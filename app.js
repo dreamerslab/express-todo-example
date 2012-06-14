@@ -30,7 +30,7 @@ app.configure( 'production', function (){
   app.set( 'view engine', 'ejs' );
   app.use( express.cookieParser());
   app.use( express.bodyParser());
-  app.use( routes.currentUser );
+  app.use( routes.current_user );
   app.use( app.router );
   app.use( express.errorHandler());
 });
