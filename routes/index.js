@@ -30,7 +30,7 @@ exports.create = function ( req, res, next ){
 
 exports.destroy = function ( req, res, next ){
   Todo.findById( req.params.id, function ( err, todo ){
-    if ( todo.userId !== req.cookies.userid ){
+    if( todo.userId !== req.cookies.userid ){
       return utils.forbidden( res );
     }
 
