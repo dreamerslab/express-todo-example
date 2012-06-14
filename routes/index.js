@@ -73,9 +73,9 @@ exports.update = function( req, res, next ){
   });
 };
 
-exports.currentUser = function ( req, res, next ){
+exports.current_user = function ( req, res, next ){
   if( !req.cookies.userid ){
-    res.cookie( 'userid', utils.uid( 32 ));
+    res.cookie( 'user_id', utils.uid( 32 ));
   }
 
   next();
