@@ -2,9 +2,9 @@ var mongoose = require( 'mongoose' );
 var Schema   = mongoose.Schema;
 
 var Todo = new Schema({
-    userId    : String,
+    user_id    : String,
     content   : String,
-    updatedAt : Date
+    updated_at : Date
 });
 
 mongoose.model( 'Todo', Todo );

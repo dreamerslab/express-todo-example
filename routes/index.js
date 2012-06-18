@@ -4,8 +4,8 @@ var utils    = require( 'connect' ).utils;
 
 exports.index = function ( req, res, next ){
   Todo.
-    find({ userId : req.cookies.user_id }).
-    sort( 'updatedAt', -1 ).
+    find({ user_id : req.cookies.user_id }).
+    sort( 'updated_at', -1 ).
     run( function ( err, todos ){
       if( err ) return next( err );
 
@@ -18,9 +18,9 @@ exports.index = function ( req, res, next ){
 
 exports.create = function ( req, res, next ){
   new Todo({
-      userId    : req.cookies.user_id,
+      user_id    : req.cookies.user_id,
       content   : req.body.content,
-      updatedAt : Date.now()
+      updated_at : Date.now()
   }).save( function ( err, todo, count ){
     if( err ) return next( err );
 
@@ -30,7 +30,7 @@ exports.create = function ( req, res, next ){
 
 exports.destroy = function ( req, res, next ){
   Todo.findById( req.params.id, function ( err, todo ){
-    if( todo.userId !== req.cookies.user_id ){
+    if( todo.user_id !== req.cookies.user_id ){
       return utils.forbidden( res );
     }
 
@@ -44,8 +44,8 @@ exports.destroy = function ( req, res, next ){
 
 exports.edit = function( req, res, next ){
   Todo.
-    find({ userId : req.cookies.user_id }).
-    sort( 'updatedAt', -1 ).
+    find({ user_id : req.cookies.user_id }).
+    sort( 'updated_at', -1 ).
     run( function ( err, todos ){
       if( err ) return next( err );
 
@@ -59,12 +59,12 @@ exports.edit = function( req, res, next ){
 
 exports.update = function( req, res, next ){
   Todo.findById( req.params.id, function ( err, todo ){
-    if( todo.userId !== req.cookies.user_id ){
+    if( todo.user_id !== req.cookies.user_id ){
       return utils.forbidden( res );
     }
 
     todo.content   = req.body.content;
-    todo.updatedAt = Date.now();
+    todo.updated_at = Date.now();
     todo.save( function ( err, todo, count ){
       if( err ) return next( err );
 
