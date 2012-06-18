@@ -19,7 +19,7 @@ exports.index = function ( req, res, next ){
 exports.create = function ( req, res, next ){
   new Todo({
       user_id    : req.cookies.user_id,
-      content   : req.body.content,
+      content    : req.body.content,
       updated_at : Date.now()
   }).save( function ( err, todo, count ){
     if( err ) return next( err );
@@ -63,7 +63,7 @@ exports.update = function( req, res, next ){
       return utils.forbidden( res );
     }
 
-    todo.content   = req.body.content;
+    todo.content    = req.body.content;
     todo.updated_at = Date.now();
     todo.save( function ( err, todo, count ){
       if( err ) return next( err );
