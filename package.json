@@ -4,8 +4,8 @@
   "private"      : true,
   "dependencies" : {
     "connect"  : "1.8.7",
-    "express"  : "2.5.9",
+    "express"  : "2.5.11",
     "ejs"      : ">= 0.0.1",
-    "mongoose" : "2.6.7"
+    "mongoose" : "2.7.1"
   }
 }
