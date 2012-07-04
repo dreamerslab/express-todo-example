@@ -6,7 +6,7 @@ exports.index = function ( req, res, next ){
   Todo.
     find({ user_id : req.cookies.user_id }).
     sort( 'updated_at', -1 ).
-    run( function ( err, todos ){
+    exec( function ( err, todos ){
       if( err ) return next( err );
 
       res.render( 'index', {
@@ -46,7 +46,7 @@ exports.edit = function( req, res, next ){
   Todo.
     find({ user_id : req.cookies.user_id }).
     sort( 'updated_at', -1 ).
-    run( function ( err, todos ){
+    exec( function ( err, todos ){
       if( err ) return next( err );
 
       res.render( 'edit', {
