@@ -5,7 +5,7 @@ var utils    = require( 'connect' ).utils;
 exports.index = function ( req, res, next ){
   Todo.
     find({ user_id : req.cookies.user_id }).
-    sort( 'updated_at', -1 ).
+    sort( '-updated_at' ).
     exec( function ( err, todos ){
       if( err ) return next( err );
 
@@ -45,7 +45,7 @@ exports.destroy = function ( req, res, next ){
 exports.edit = function( req, res, next ){
   Todo.
     find({ user_id : req.cookies.user_id }).
-    sort( 'updated_at', -1 ).
+    sort( '-updated_at' ).
     exec( function ( err, todos ){
       if( err ) return next( err );
 
