@@ -3,8 +3,11 @@ var Todo     = mongoose.model( 'Todo' );
 var utils    = require( 'connect' ).utils;
 
 exports.index = function ( req, res, next ){
+  var user_id = req.cookies ?
+    req.cookies.user_id : undefined;
+
   Todo.
-    find({ user_id : req.cookies.user_id }).
+    find({ user_id : user_id }).
     sort( '-updated_at' ).
     exec( function ( err, todos ){
       if( err ) return next( err );
@@ -30,6 +33,9 @@ exports.create = function ( req, res, next ){
 
 exports.destroy = function ( req, res, next ){
   Todo.findById( req.params.id, function ( err, todo ){
+    var user_id = req.cookies ?
+      req.cookies.user_id : undefined;
+
     if( todo.user_id !== req.cookies.user_id ){
       return utils.forbidden( res );
     }
@@ -43,8 +49,11 @@ exports.destroy = function ( req, res, next ){
 };
 
 exports.edit = function( req, res, next ){
+  var user_id = req.cookies ?
+      req.cookies.user_id : undefined;
+
   Todo.
-    find({ user_id : req.cookies.user_id }).
+    find({ user_id : user_id }).
     sort( '-updated_at' ).
     exec( function ( err, todos ){
       if( err ) return next( err );
@@ -59,7 +68,10 @@ exports.edit = function( req, res, next ){
 
 exports.update = function( req, res, next ){
   Todo.findById( req.params.id, function ( err, todo ){
-    if( todo.user_id !== req.cookies.user_id ){
+    var user_id = req.cookies ?
+      req.cookies.user_id : undefined;
+
+    if( todo.user_id !== user_id ){
       return utils.forbidden( res );
     }
 
@@ -74,7 +86,10 @@ exports.update = function( req, res, next ){
 };
 
 exports.current_user = function ( req, res, next ){
-  if( !req.cookies.user_id ){
+  var user_id = req.cookies ?
+      req.cookies.user_id : undefined;
+
+  if( !user_id ){
     res.cookie( 'user_id', utils.uid( 32 ));
   }
 
