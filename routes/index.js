@@ -85,6 +85,7 @@ exports.update = function( req, res, next ){
   });
 };
 
+// ** express turns the cookie key to lowercase **
 exports.current_user = function ( req, res, next ){
   var user_id = req.cookies ?
       req.cookies.user_id : undefined;
