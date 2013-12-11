@@ -2,16 +2,15 @@
  * Module dependencies.
  */
 
-var express = require( 'express' );
-var http    = require( 'http' );
-var path    = require( 'path' );
-var engine  = require( 'ejs-locals' )
-var app     = express();
-
 // mongoose setup
 require( './db' );
 
-var routes = require( './routes' );
+var express = require( 'express' );
+var routes  = require( './routes' );
+var http    = require( 'http' );
+var path    = require( 'path' );
+var app     = express();
+var engine  = require( 'ejs-locals' );
 
 // all environments
 app.set( 'port', process.env.PORT || 3001 );
