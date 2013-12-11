@@ -1,6 +1,6 @@
+var utils    = require( '../utils' );
 var mongoose = require( 'mongoose' );
 var Todo     = mongoose.model( 'Todo' );
-var utils    = require( 'connect' ).utils;
 
 exports.index = function ( req, res, next ){
   var user_id = req.cookies ?
