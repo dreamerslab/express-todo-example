@@ -36,7 +36,7 @@ exports.destroy = function ( req, res, next ){
     var user_id = req.cookies ?
       req.cookies.user_id : undefined;
 
-    if( todo.user_id !== req.cookies.user_id ){
+    if( todo.user_id !== user_id ){
       return utils.forbidden( res );
     }
 
