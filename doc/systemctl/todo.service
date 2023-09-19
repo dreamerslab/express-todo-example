@@ -1,0 +1,15 @@
+# this file should be in /etc/systemd/system/todo.service
+
+[Unit]
+Description="Todo Example"
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/node app.js
+WorkingDirectory=/home/nodejs/todo/
+Restart=always
+User=nodejs
+Environment=NODE_ENV=production PORT=3001
+
+[Install]
+WantedBy=multi-user.target
