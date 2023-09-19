@@ -1,4 +1,4 @@
-<% layout( 'layout' ) -%>
+<% layout('layout') -%>
 
 <h1 id="page-title"><%= title %></h1>
 <div id="list">
@@ -8,8 +8,8 @@
     </div>
   </form>
 
-<% todos.forEach( function ( todo ){ %>
-  <% if( todo._id == current ){ %>
+<% todos.forEach(function (todo) { %>
+  <% if(todo._id == current) { %>
   <div class="item-new">
   <% }else{ %>
   <div class="item">
@@ -23,7 +23,7 @@
     <a class="update-link" href="/edit/<%= todo._id %>" title="Update this todo item"><%= todo.content %></a>
     <% } %>
 
-    <% if( todo._id == current ){ %>
+    <% if(todo._id == current) { %>
     <a class="del-btn-edit" href="/destroy/<%= todo._id %>" title="Delete this todo item">Delete</a>
     <% }else{ %>
     <a class="del-btn" href="/destroy/<%= todo._id %>" title="Delete this todo item">Delete</a>
