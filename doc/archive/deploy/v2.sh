@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Copy this script to $HOME and run it
 
 path=/srv/www/todo
@@ -27,7 +26,7 @@ mv $path $path`date +"%Y%m%d%H%M%S"`
 echo '...done!'
 echo ''
 
-echo 'Stopping iceberg server...'
+echo 'Stopping TODO server...'
 sudo stop todo
 echo '...done!'
 echo ''
@@ -37,7 +36,7 @@ mv $tmp $path
 echo '...done!'
 echo ''
 
-echo 'Starting iceberg server...'
+echo 'Starting TODO server...'
 sudo start todo
 echo '...done!'
 echo ''

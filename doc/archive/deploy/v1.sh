@@ -38,7 +38,7 @@ sudo nginx -s stop
 echo '...done!'
 echo ''
 
-echo 'Stopping iceberg server...'
+echo 'Stopping TODO server...'
 sudo stop todo
 echo '...done!'
 echo ''
@@ -48,7 +48,7 @@ mv $tmp $path
 echo '...done!'
 echo ''
 
-echo 'Starting iceberg server...'
+echo 'Starting TODO server...'
 sudo start todo
 echo '...done!'
 echo ''
