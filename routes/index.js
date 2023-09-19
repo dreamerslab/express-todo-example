@@ -1,97 +1,88 @@
-var utils    = require( '../utils' );
-var mongoose = require( 'mongoose' );
-var Todo     = mongoose.model( 'Todo' );
+const mongoose = require('mongoose');
+const utils = require('../utils');
 
-exports.index = function ( req, res, next ){
-  var user_id = req.cookies ?
-    req.cookies.user_id : undefined;
+const Todo = mongoose.model('Todo');
 
-  Todo.
-    find({ user_id : user_id }).
-    sort( '-updated_at' ).
-    exec( function ( err, todos ){
-      if( err ) return next( err );
-
-      res.render( 'index', {
-          title : 'Express Todo Example',
-          todos : todos
-      });
+exports.index = async function (req, res, next) {
+  try {
+    const userId = req.cookies ? req.cookies.user_id : undefined;
+    const todos = await Todo.find({ user_id: userId }).sort('-updated_at').exec();
+    res.render('index', {
+      title: 'Express Todo Example',
+      todos,
     });
+  } catch (err) {
+    next(err);
+  }
 };
 
-exports.create = function ( req, res, next ){
-  new Todo({
-      user_id    : req.cookies.user_id,
-      content    : req.body.content,
-      updated_at : Date.now()
-  }).save( function ( err, todo, count ){
-    if( err ) return next( err );
-
-    res.redirect( '/' );
-  });
+exports.create = async function (req, res, next) {
+  try {
+    const newTodo = new Todo({
+      user_id: req.cookies ? req.cookies.user_id : undefined,
+      content: req.body.content,
+      updated_at: Date.now(),
+    });
+    await newTodo.save();
+    res.redirect('/');
+  } catch (err) {
+    next(err);
+  }
 };
 
-exports.destroy = function ( req, res, next ){
-  Todo.findById( req.params.id, function ( err, todo ){
-    var user_id = req.cookies ?
-      req.cookies.user_id : undefined;
+exports.destroy = async function (req, res, next) {
+  try {
+    const todo = await Todo.findById(req.params.id);
+    const userId = req.cookies ? req.cookies.user_id : undefined;
 
-    if( todo.user_id !== user_id ){
-      return utils.forbidden( res );
+    if (todo.user_id !== userId) {
+      return utils.forbidden(res);
     }
 
-    todo.remove( function ( err, todo ){
-      if( err ) return next( err );
-
-      res.redirect( '/' );
-    });
-  });
+    await todo.deleteOne();
+    res.redirect('/');
+  } catch (err) {
+    next(err);
+  }
 };
 
-exports.edit = function( req, res, next ){
-  var user_id = req.cookies ?
-      req.cookies.user_id : undefined;
-
-  Todo.
-    find({ user_id : user_id }).
-    sort( '-updated_at' ).
-    exec( function ( err, todos ){
-      if( err ) return next( err );
-
-      res.render( 'edit', {
-        title   : 'Express Todo Example',
-        todos   : todos,
-        current : req.params.id
-      });
+exports.edit = async function (req, res, next) {
+  try {
+    const userId = req.cookies ? req.cookies.user_id : undefined;
+    const todos = await Todo.find({ user_id: userId }).sort('-updated_at').exec();
+    res.render('edit', {
+      title: 'Express Todo Example',
+      todos,
+      current: req.params.id,
     });
+  } catch (err) {
+    next(err);
+  }
 };
 
-exports.update = function( req, res, next ){
-  Todo.findById( req.params.id, function ( err, todo ){
-    var user_id = req.cookies ?
-      req.cookies.user_id : undefined;
+exports.update = async function (req, res, next) {
+  try {
+    const todo = await Todo.findById(req.params.id);
+    const userId = req.cookies ? req.cookies.user_id : undefined;
 
-    if( todo.user_id !== user_id ){
-      return utils.forbidden( res );
+    if (todo.user_id !== userId) {
+      return utils.forbidden(res);
     }
 
-    todo.content    = req.body.content;
+    todo.content = req.body.content;
     todo.updated_at = Date.now();
-    todo.save( function ( err, todo, count ){
-      if( err ) return next( err );
-
-      res.redirect( '/' );
-    });
-  });
+    await todo.save();
+    res.redirect('/');
+  } catch (err) {
+    next(err);
+  }
 };
 
-// ** express turns the cookie key to lowercase **
-exports.current_user = function ( req, res, next ){
-  var user_id = req.cookies ?
-      req.cookies.user_id : undefined;
+exports.current_user = function (req, res, next) {
+  const userId = req.cookies ? req.cookies.user_id : undefined;
 
-  if( !user_id ){
-    res.cookie( 'user_id', utils.uid( 32 ));
+  if (!userId) {
+    res.cookie('user_id', utils.uid(32));
   }
 
   next();
